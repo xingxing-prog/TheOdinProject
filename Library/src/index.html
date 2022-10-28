@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    
+
     <title>Library</title>
 </head>
 <body>
@@ -17,7 +19,7 @@
     </header>
     <button>+ Add Books</button>
     <div class="modal">
-        <form class="modal-content">
+        <form class="modal-content" id="contact">
             <span class="close" id="close"><i class="fa fa-trash"></i></span>
            
             <h3>Add New Book</h3>
@@ -47,6 +49,29 @@
 
     <div class="books"></div>
 
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBo0cS8MdLdoLEY4-AWschS5vvOWQrQyL8",
+          authDomain: "library-c446e.firebaseapp.com",
+          projectId: "library-c446e",
+          storageBucket: "library-c446e.appspot.com",
+          messagingSenderId: "106978352671",
+          appId: "1:106978352671:web:4bd57742ae6f848368bf2a",
+          measurementId: "G-R3F6HMSJL1"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
     <script src="main.js"></script>
 </body>
 </html>

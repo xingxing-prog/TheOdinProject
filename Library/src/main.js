@@ -67,7 +67,7 @@ function displayReset(){
 }
 
 submit.addEventListener("click", (e)=>{
-    e.preventDefault();
+    //e.preventDefault();
     console.log(e.target);
 
     addBookToLibrary();
