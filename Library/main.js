@@ -8,6 +8,7 @@ var page = document.getElementById("pages");
 var read = document.getElementById("read");
 var submit = document.getElementById("submit");
 var books = document.querySelector(".books");
+var titleError = document.getElementById("titleError");
 
 
 
@@ -25,16 +26,14 @@ let gameOfThrone = new Book("Game of Thrones", "George R.R. Martin", 864, "not R
 library.push(gameOfThrone);
 
 function addBookToLibrary(){
+   
     let book = new Book(title.value, author.value, page.value, read.value);
-    //book.title = title.value;
-    //book.author = author.value;
-    //book.pages = page.value;
-    //book.read = read.value;
-    if(!newBooks.includes(book.title) && book.title != "" && book.author != "" &&book.page !="" &&book.read !=""){
+    titleError.innerHTML = validateInput(title.value, "title");
+    if(!newBooks.includes(book.title) && (!isEmpty(book.title)) && (!isEmpty(book.author)) && (!isEmpty(book.pages)) &&(!isEmpty(book.read))){
         newBooks.push(book.title);
         library.push(book);
     }
-  
+    
 }
 
 function displayAddedBooks(){
@@ -68,9 +67,9 @@ function displayReset(){
 }
 
 submit.addEventListener("click", (e)=>{
-    e.preventDefault;
+    e.preventDefault();
     console.log(e.target);
-   
+
     addBookToLibrary();
     console.log(library);
     displayReset();
@@ -79,9 +78,7 @@ submit.addEventListener("click", (e)=>{
 });
 
 
+const isEmpty = value => value === "" || value ===undefined || value ===null;
 
+const validateInput =(value, fieldName)=>isEmpty(value) ? `${fieldName} cannot be left blank`:"";
 
-
-//displayAddedBooks();
-console.log(library);
-//displayAddedBooks();

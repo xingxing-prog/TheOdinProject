@@ -17,27 +17,31 @@
     </header>
     <button>+ Add Books</button>
     <div class="modal">
-        <div class="modal-content">
+        <form class="modal-content">
             <span class="close" id="close"><i class="fa fa-trash"></i></span>
            
             <h3>Add New Book</h3>
             
             <div class="input">
-            <input type="text" placeholder="Title" id="title" class="bookInfo"> <br>
-            <input type="text" placeholder="Author" id="author" class="bookInfo"> <br>
-            <input type="text" placeholder="Pages" id="pages" class="bookInfo"> <br>
+            <input type="text" placeholder="Title" id="title" class="bookInfo" name="title" required> <br>
+            <small id="titleError"></small>
+            <input type="text" placeholder="Author" id="author" class="bookInfo" name="author" required> <br>
+            <small></small>
+            <input type="number" placeholder="Pages" id="pages" class="bookInfo" name="page" required> <br>
+            <small></small>
             </div>
             
             <div class="read">
-              <select name="read" id="read">
+              <select name="read" id="read" required>
                 <option value="0">Have you read it?</option>
                 <option value="read">Read</option>
                 <option value="not read">Not Read</option>
+                <small></small>
               </select>
             </div>
 
             <input type="submit" class="bookInfo" id="submit">
-        </div> 
+        </form> 
 
     </div>
 
