@@ -41,32 +41,6 @@ function addBookToLibrary(){
     
 }
 
-function displayAddedBooks(){
-    for (let book of library){
-        const newBook = document.createElement("div");
-        newBook.setAttribute("class", "book");
-        const bookTitle = document.createElement("h4");
-        bookTitle.textContent = book.title;
-        const author = document.createElement("p");
-        author.textContent = book.author;
-        const page = document.createElement("p");
-        page.textContent = book.pages + " pages";
-        const read = document.createElement("button");
-        read.textContent = book.read;
-        read.setAttribute("class", "bookRead");
-        const remove = document.createElement("button");
-        remove.setAttribute("class", "bookRemove");
-        remove.textContent = "remove";
-
-        newBook.appendChild(bookTitle);
-        newBook.appendChild(author);
-        newBook.appendChild(page);
-        newBook.appendChild(read);
-        newBook.appendChild(remove);
-        books.appendChild(newBook);
-    }
-}
-
 function displayReset(){
     books.innerHTML ="";
 }
