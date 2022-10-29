@@ -8,8 +8,8 @@ var submit = document.getElementById("submit");
 var books = document.querySelector(".books");
 
 var contact = document.getElementById("contact");
-
-
+var close = document.getElementById("close");
+var addBook = document.getElementById("addBook");
 
 function Book(title, author, page, read){
 
@@ -21,7 +21,7 @@ function Book(title, author, page, read){
 }
 
 
-let gameOfThrone = new Book("Game of Thrones", "George R.R. Martin", 864, "not Read");
+let gameOfThrone = new Book("Game of Throne", "George R.R. Martin", 864, "not Read");
 
 library.push(gameOfThrone);
 
@@ -51,10 +51,10 @@ contact.addEventListener("submit", (e)=>{
     library = JSON.parse(localStorage.getItem("books") || '[]');
     addBookToLibrary();
 
-    console.log(library);
-    //localStorage.setItem("books", JSON.stringify(library));
+   
+    localStorage.setItem("books", JSON.stringify(library));
 
-    
+    console.log(library);
     displayReset();
     displayLibrary();
     //displayAddedBooks();
@@ -62,15 +62,19 @@ contact.addEventListener("submit", (e)=>{
     
 });
 
-console.log(window.localStorage.getItem("books"));
+//console.log(window.localStorage.getItem("books"));
 
 function displayLibrary(){
     var libraryBooks = localStorage.getItem("books");
     var libraryParsed = JSON.parse(libraryBooks);
+    if(libraryBooks === null){
+        libraryParsed = [];
+    }
     for (let book of libraryParsed){
         const newBook = document.createElement("div");
         newBook.setAttribute("class", "book");
         const bookTitle = document.createElement("h4");
+        bookTitle.setAttribute("value", book.title);
         bookTitle.textContent = book.title;
         const author = document.createElement("p");
         author.textContent = book.author;
@@ -79,9 +83,34 @@ function displayLibrary(){
         const read = document.createElement("button");
         read.textContent = book.read;
         read.setAttribute("class", "bookRead");
+
+        read.addEventListener("click", (e)=>{
+            console.log(e.target);
+           if(e.target.textContent ==="read"){
+               e.target.textContent = "not read";
+           }
+           else{
+               e.target.textContent = "read";
+           }
+        })
+
         const remove = document.createElement("button");
         remove.setAttribute("class", "bookRemove");
         remove.textContent = "remove";
+
+        remove.addEventListener("click", (e)=>{
+            var title =e.target.parentNode.querySelector("h4").textContent;
+
+            
+            var books =JSON.parse(localStorage.getItem("books"));
+            books =books.filter((book)=>book.title != title);
+            localStorage.setItem("books", JSON.stringify(books));
+            //console.log(books);
+            
+            e.target.parentNode.remove();
+           
+            
+        })
 
         newBook.appendChild(bookTitle);
         newBook.appendChild(author);

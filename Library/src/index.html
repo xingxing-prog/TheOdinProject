@@ -19,7 +19,7 @@
     <header>
         <h1>Library</h1>
     </header>
-    <button>+ Add Books</button>
+    <button id="addBook">+ Add Books</button>
     <div class="modal">
         <form class="modal-content" id="contact">
             <span class="close" id="close"><i class="fa fa-trash"></i></span>
@@ -36,7 +36,7 @@
             </div>
             
             <div class="read">
-              <select name="read" id="read" required pattern=value!="0">
+              <select name="read" id="read" required>
                 <option value="not read">Have you read it?</option>
                 <option value="read">Read</option>
                 <option value="not read">Not Read</option>
@@ -51,32 +51,7 @@
 
     <div class="books"></div>
     
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyBo0cS8MdLdoLEY4-AWschS5vvOWQrQyL8",
-          authDomain: "library-c446e.firebaseapp.com",
-          projectId: "library-c446e",
-          storageBucket: "library-c446e.appspot.com",
-          messagingSenderId: "106978352671",
-          appId: "1:106978352671:web:4bd57742ae6f848368bf2a",
-          measurementId: "G-R3F6HMSJL1"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-       
-      </script>
-   
-    
+  
     <script src="main.js"></script>
 </body>
 </html>
