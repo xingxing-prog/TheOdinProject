@@ -10,6 +10,8 @@ var books = document.querySelector(".books");
 var contact = document.getElementById("contact");
 var close = document.getElementById("close");
 var addBook = document.getElementById("addBook");
+var modal = document.querySelector(".modal");
+
 
 function Book(title, author, page, read){
 
@@ -24,6 +26,14 @@ function Book(title, author, page, read){
 let gameOfThrone = new Book("Game of Throne", "George R.R. Martin", 864, "not Read");
 
 library.push(gameOfThrone);
+
+addBook.addEventListener("click", ()=>{
+     modal.style.display="block";
+});
+
+close.addEventListener("click", ()=>{
+    modal.style.display="none";
+})
 
 function addBookToLibrary(){
    
@@ -58,6 +68,8 @@ contact.addEventListener("submit", (e)=>{
     displayReset();
     displayLibrary();
     //displayAddedBooks();
+    modal.style.display="none";
+    contact.reset();
     
     
 });

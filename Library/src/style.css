@@ -1,16 +1,36 @@
 
 *{
     box-sizing:border-box;
+   
 }
 
 body{
     font-family:"League Spartan";
     background:lavender;
+    margin:0;
+}
+
+header{
+    background:#fff;
+    padding:1rem;
+    position:sticky;
+    box-shadow: 0 2px 2px 2px -3px #fff;
+}
+
+#addBook{
+    position:absolute;
+    left:15rem;
+    top:2rem;
+    padding:0.5rem;
+    background-color:cyan;
+    border:none;
+    border-radius:1rem;
+    color:#fff;
 }
 
 .modal{
     
-    /*display:none;*/
+    display:none;
     position:fixed;
     z-index:1;
     left:0;
@@ -31,7 +51,7 @@ body{
     width:20rem;
     padding:1.5rem;
     border-radius:0.5rem;
-    margin: 20% auto;
+    margin: 15% auto;
     
     
 }
