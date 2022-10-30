@@ -21,8 +21,8 @@ header{
     position:absolute;
     left:15rem;
     top:2rem;
-    padding:0.5rem;
-    background-color:cyan;
+    padding:0.5rem 1rem;
+    background-color:rgb(73, 41, 12);
     border:none;
     border-radius:1rem;
     color:#fff;
@@ -69,7 +69,7 @@ header{
 
 .bookInfo{
     padding:0.8rem;
-    background-color:lightgreen;
+    background-color:pink;
     border:transparent;
     width:100%;
     border-radius:0.5rem;
