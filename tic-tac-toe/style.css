@@ -1,0 +1,16 @@
+body{
+    
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+}
+header{
+    position:sticky;
+    background:cyan;
+    padding:1.5rem;
+    text-align:center;
+    color:#fff;
+}
+
