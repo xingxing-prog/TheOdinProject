@@ -1,5 +1,5 @@
 var gameBoard={
-    boards:["X", "X", "X", null, "O", "X", null, null, "O"]
+    boards:[null, null, null, null, null, null, null, null, null]
 };
 
 
@@ -16,9 +16,14 @@ var displayController=(()=>{
             newElement.value = value++;
             
             newElement.textContent = item;
-            newElement.addEventListener("click", player().move);
+
+           
+            newElement.addEventListener("click", player("X").move);
+            newElement.addEventListener("click", computer("O").autoMove);
+           
             board.appendChild(newElement);
         }
+        
         
     };
 
@@ -30,18 +35,19 @@ var displayController=(()=>{
     return {displayBoard, displayReset};
 })();
 
-
-const player =()=>{
-
-    let marks = document.querySelectorAll(".choice");
-    let mark = "";
-    marks.forEach((choice)=>{
-        choice.addEventListener("click", ()=>{
-            mark = choice.textContent;   
-        });
-        
+let marks = document.querySelectorAll(".choice");
+let mark;
+marks.forEach((choice)=>{
+    choice.addEventListener("click", ()=>{
+        mark = choice.textContent;   
     });
+    
+});
 
+
+const player =(mark)=>{
+
+   
     let gameOver = isGameFinished;
 
     const move =(e)=>{
@@ -54,6 +60,7 @@ const player =()=>{
             console.log("Game is over");
         }
         console.log(e.target.textContent);
+
         if(gameBoard.boards[e.target.value-9] ===null || gameBoard.boards[e.target.value-9]===""){
             e.target.textContent = mark;
             gameBoard.boards[e.target.value-9] = mark;
@@ -62,14 +69,46 @@ const player =()=>{
             console.log(win);
             console.log(tie);
             console.log(gameBoard.boards);
+            console.log(mark); 
         }
+        displayController.displayReset();
+        displayController.displayBoard(board.boards);
       
     }
 
     return {move};
 
-}
+};
 
+const computer =(autoMark)=>{
+    const autoMove=()=>{
+
+
+    let empty = [];
+    let board = gameBoard.boards;
+    for(let i=0; i<board.length; i++){
+        if(board[i] ==="" ||board[i] ===null){
+            empty.push(i);
+        }
+    }
+
+    console.log(empty);
+
+    let spot = empty[Math.floor(Math.random()*empty.length)];
+    gameBoard.boards[spot] = autoMark;
+   
+    let tie = isGameFinished.isTie(gameBoard.boards);
+    let win =isGameFinished.isWinner(gameBoard.boards);
+    console.log(win);
+    console.log(tie);
+    console.log(board);
+    
+    
+    };
+   
+   
+    return{autoMove};
+};
 
 
 const isGameFinished =(()=>{
@@ -86,29 +125,36 @@ const isGameFinished =(()=>{
 
     const isWinner=(board)=>{
 
-        
-
-        if((board[0]===board[1] && board[1]===board[2] && board[0]!=null && board[0] !="") || (board[3]===board[4]===board[5] &&board[3] !==null && board[3] !=="") || 
-            (board[6]===board[7]===board[8] && board[6] !==null &&board[6] !=="")){
+        for(let i=0; i<board.length; i+=3){
+            if(board[i] ===board[i+1] && board[i+1] ===board[i+2] && board[i] !=="" && board[i] !==null){
                 return true;
-
-        }
-        else{
-            return false;
+            }
         }
 
+        for(let j=0; j<3; j++){
+            if(board[j] ===board[j+3] && board[j+3]===board[j+6] && board[j] !=="" && board[j] !==null){
+                return true;
+            }
+        }
+
+        if(board[0] ===board[4] && board[0] ===board[8] && board[0] !=="" && board[0] !==null){
+            return true;
+        }
+        else if(board[2] ===board[4] &&board[4]===board[6] && board[2] !=="" && board[2] !==null){
+            return true;
+        }
+
+        return false;
 
     }
 
-    return {isTie, isWinner}
+    return {isTie, isWinner};
 })();
 
 let board = gameBoard;
 displayController.displayBoard(board.boards);
-var player1 = player("X");
-//player1.move(2);
-var player2 = player("O");
-//player2.move(3);
+
+
 displayController.displayReset();
 displayController.displayBoard(board.boards);
 console.log(isGameFinished.isTie(board.boards));
