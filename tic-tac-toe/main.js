@@ -41,17 +41,21 @@ var displayController=(()=>{
     const displayReset =()=>{
         board.innerHTML = "";
     }
+
+    const reFresh =()=>{
+        gameBoard.initial();
+        displayReset();
+        document.querySelector(".modal").style.display = "none";
+    }
  
 
-    return {displayBoard, displayReset};
+    return {displayBoard, displayReset, reFresh};
 })();
 
 
 
 const player =(mark)=>{
 
-   
-    let gameOver = isGameFinished;
 
     const move =(e)=>{
 
@@ -68,7 +72,16 @@ const player =(mark)=>{
 
             if(win){
                 gameBoard.full();
+                document.querySelector(".modal").style.display = "block";
+                result.textContent = `${win} is winner!`;
             }
+
+            else if(tie){
+                document.querySelector(".modal").style.display = "block";
+                result.textContent = `It's tie !`;
+            }
+
+
             
             
             console.log(win);
@@ -111,13 +124,23 @@ const computer =(autoMark)=>{
    
     let tie = isGameFinished.isTie(board);
     let win =isGameFinished.isWinner(board);
+    let result = document.getElementById("result");
     console.log(win);
     console.log(tie);
     console.log(board);
 
     if(win){
         gameBoard.full();
+        document.querySelector(".modal").style.display = "block";
+        result.textContent = `${win} is winner!`;
     }
+
+    else if(tie){
+        document.querySelector(".modal").style.display = "block";
+        result.textContent = `It's a tie !`;
+    }
+
+
     
     
     };
@@ -131,7 +154,7 @@ const isGameFinished =(()=>{
 
     const isTie =(board)=>{
         for (let cell of board){
-            if(cell ==="" || cell===null){
+            if(cell ==="" || cell===null || cell ===undefined){
                 return false;
             }
         }
@@ -143,24 +166,24 @@ const isGameFinished =(()=>{
 
         for(let i=0; i<board.length; i+=3){
             if(board[i] ===board[i+1] && board[i+1] ===board[i+2] && board[i] !=="" && board[i] !==null){
-                return true;
+                return board[i];
             }
         }
 
         for(let j=0; j<3; j++){
             if(board[j] ===board[j+3] && board[j+3]===board[j+6] && board[j] !=="" && board[j] !==null){
-                return true;
+                return board[j];
             }
         }
 
         if(board[0] ===board[4] && board[0] ===board[8] && board[0] !=="" && board[0] !==null){
-            return true;
+            return board[0];
         }
         else if(board[2] ===board[4] &&board[4]===board[6] && board[2] !=="" && board[2] !==null){
-            return true;
+            return board[2];
         }
 
-        return false;
+        return null;
 
     }
 
@@ -194,6 +217,17 @@ const gameController =()=>{
 
          boards.addEventListener("click", computer(computerMark()).autoMove);
 
+         /*if(isGameFinished.isWinner(board)){
+            gameBoard.full();
+            document.querySelector(".modal").style.display = "block";
+            result.textContent = `${isGameFinished.isWinner(board)} is winner!`;
+         }
+
+         else if(isGameFinished.isTie(board)){
+            document.querySelector(".modal").style.display = "block";
+            result.textContent = `It's a tie!`;
+         }*/
+
          
     });
 
@@ -214,7 +248,7 @@ const gameController =()=>{
     displayController.displayReset();
     displayController.displayBoard(board);
 
-   
+    document.getElementById("restart").addEventListener("click", displayController.reFresh);
 
    
 
