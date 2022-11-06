@@ -5,9 +5,17 @@ var gameBoard=(()=>{
         for(let i=0; i<board.length; i++){
             board[i] =null;
         }
-        return board;
+        
     }
-    return{boards, initial};
+
+    const full =()=>{
+        for(let i=0; i<board.length; i++){
+            if(board[i] ===null || board[i] ===""){
+                board[i] = undefined;
+            }
+        }
+    }
+    return{boards, initial, full};
 })();
 
 //console.log(gameBoard.boards());
@@ -53,8 +61,16 @@ const player =(mark)=>{
         if(board[e.target.value] ===null || board[e.target.value]===""){
             e.target.textContent = mark;
             board[e.target.value] = mark;
+
+            
             let tie = isGameFinished.isTie(board);
             let win =isGameFinished.isWinner(board);
+
+            if(win){
+                gameBoard.full();
+            }
+            
+            
             console.log(win);
             console.log(tie);
             console.log(board);
@@ -98,6 +114,10 @@ const computer =(autoMark)=>{
     console.log(win);
     console.log(tie);
     console.log(board);
+
+    if(win){
+        gameBoard.full();
+    }
     
     
     };
@@ -162,6 +182,7 @@ const gameController =()=>{
      
          boards.addEventListener('click', player(e.target.textContent).move);
 
+         
          let computerMark = ()=>{
             if(e.target.textContent === "X"){
                 return "O";
