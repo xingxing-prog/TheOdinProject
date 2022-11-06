@@ -1,27 +1,30 @@
-var gameBoard={
-    boards:[null, null, null, null, null, null, null, null, null]
-};
+var gameBoard=(()=>{
+    let board=[null, null, null, null, null, null, null, null, null];
+    const boards =()=>board;
+    const initial = ()=>{
+        for(let i=0; i<board.length; i++){
+            board[i] =null;
+        }
+        return board;
+    }
+    return{boards, initial};
+})();
 
+//console.log(gameBoard.boards());
 
 var displayController=(()=>{
 
     const board = document.querySelector(".board");
-    var value = 0;
+ 
     const displayBoard = (boards)=>{
        
 
-        for(let item of boards){
+        for(let i=0; i<boards.length; i++){
             let newElement = document.createElement("div");
             newElement.setAttribute("class", "cell");
-            newElement.value = value++;
-            
-            newElement.textContent = item;
-
-           
-            newElement.addEventListener("click", player("X").move);
-            newElement.addEventListener("click", computer("O").autoMove);
-           
-            board.appendChild(newElement);
+            newElement.value = i;
+            newElement.textContent = boards[i];
+            board.append(newElement);
         }
         
         
@@ -35,14 +38,6 @@ var displayController=(()=>{
     return {displayBoard, displayReset};
 })();
 
-let marks = document.querySelectorAll(".choice");
-let mark;
-marks.forEach((choice)=>{
-    choice.addEventListener("click", ()=>{
-        mark = choice.textContent;   
-    });
-    
-});
 
 
 const player =(mark)=>{
@@ -52,40 +47,37 @@ const player =(mark)=>{
 
     const move =(e)=>{
 
-        if(gameOver.isWinner(gameBoard.boards)){
-            console.log("It's winner");
-        }
+      
+        let board = gameBoard.boards();
 
-        if(gameOver.isTie(gameBoard.boards)){
-            console.log("Game is over");
-        }
-        console.log(e.target.textContent);
-
-        if(gameBoard.boards[e.target.value-9] ===null || gameBoard.boards[e.target.value-9]===""){
+        if(board[e.target.value] ===null || board[e.target.value]===""){
             e.target.textContent = mark;
-            gameBoard.boards[e.target.value-9] = mark;
-            let tie = isGameFinished.isTie(gameBoard.boards);
-            let win =isGameFinished.isWinner(gameBoard.boards);
+            board[e.target.value] = mark;
+            let tie = isGameFinished.isTie(board);
+            let win =isGameFinished.isWinner(board);
             console.log(win);
             console.log(tie);
-            console.log(gameBoard.boards);
+            console.log(board);
             console.log(mark); 
-        }
-        displayController.displayReset();
-        displayController.displayBoard(board.boards);
+            
+       
+            //displayController.displayReset();
+           // displayController.displayBoard(gameBoard.boards);
       
+        }
     }
-
     return {move};
 
 };
 
 const computer =(autoMark)=>{
+    
+    
     const autoMove=()=>{
 
-
     let empty = [];
-    let board = gameBoard.boards;
+    let board = gameBoard.boards();
+    console.log(board);
     for(let i=0; i<board.length; i++){
         if(board[i] ==="" ||board[i] ===null){
             empty.push(i);
@@ -95,10 +87,14 @@ const computer =(autoMark)=>{
     console.log(empty);
 
     let spot = empty[Math.floor(Math.random()*empty.length)];
-    gameBoard.boards[spot] = autoMark;
+    board[spot] = autoMark;
+
+    displayController.displayReset();
    
-    let tie = isGameFinished.isTie(gameBoard.boards);
-    let win =isGameFinished.isWinner(gameBoard.boards);
+    displayController.displayBoard(board);
+   
+    let tie = isGameFinished.isTie(board);
+    let win =isGameFinished.isWinner(board);
     console.log(win);
     console.log(tie);
     console.log(board);
@@ -151,11 +147,63 @@ const isGameFinished =(()=>{
     return {isTie, isWinner};
 })();
 
-let board = gameBoard;
-displayController.displayBoard(board.boards);
+const gameController =()=>{
+
+    let board = gameBoard.boards();
+    
+    var boards = document.querySelector(".board");
+    
+    var mark = document.querySelector(".mark");
+
+    mark.addEventListener("click", (e)=>{
+         console.log(e.target);
+         console.log(e.target.textContent);
+        
+     
+         boards.addEventListener('click', player(e.target.textContent).move);
+
+         let computerMark = ()=>{
+            if(e.target.textContent === "X"){
+                return "O";
+            }
+            else{
+                return "X";
+            }
+         }
+
+         boards.addEventListener("click", computer(computerMark()).autoMove);
+
+         
+    });
+
+  
+    
+    
+
+    /*if(isGameFinished.isWinner(board)){
+        console.log("It's finished");
+    }
+    if(isGameFinished.isTie(board)){
+        console.log("It's tie");
+    }*/
+   
+    //boards.addEventListener('click', player("X").move);
+    //boards.addEventListener("click", computer("O").autoMove);
+        
+    displayController.displayReset();
+    displayController.displayBoard(board);
+
+   
+
+   
+
+};
+
+gameController();
 
 
-displayController.displayReset();
-displayController.displayBoard(board.boards);
-console.log(isGameFinished.isTie(board.boards));
-console.log(isGameFinished.isWinner(board.boards));
+//displayController.displayReset();
+//displayController.displayBoard(board.boards);
+
+//console.log(isGameFinished.isTie(board.boards));
+//console.log(isGameFinished.isWinner(board.boards));
