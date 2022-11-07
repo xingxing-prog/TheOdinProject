@@ -107,18 +107,6 @@ const computer =(autoMark)=>{
     
     const autoMove=(spot)=>{
 
-    /*let empty = [];
-    let board = gameBoard.boards();
-    console.log(board);
-    for(let i=0; i<board.length; i++){
-        if(board[i] ==="" ||board[i] ===null){
-            empty.push(i);
-        }
-    }
-
-    console.log(empty);
-
-    let spot = empty[Math.floor(Math.random()*empty.length)];*/
     let board = gameBoard.boards();
     board[spot] = autoMark;
 
@@ -186,12 +174,7 @@ const computer =(autoMark)=>{
             let bestMove = -1;
 
             let available = emptyBoard(gameBoard.boards());
-            /*let available = [];
-            for(let i=0; i<board.length; i++){
-                if(board[i] ==="" ||board[i] ===null){
-                   available.push(i);
-              }
-            };*/
+          
             bestMove = isWinnerExisted(autoMark, available, bestMove);
 
             if(bestMove >=0){
@@ -228,70 +211,11 @@ const computer =(autoMark)=>{
         console.log(findBestMove());
         let spot = findBestMove();
         autoMove(spot);
-        /*const findBestMove= (board)=>{
-
-            let available = [];
-
-            for(let i=0; i<board.length; i++){
-                if(board[i] ==="" ||board[i] ===null){
-                   available.push(i);
-              }
-            }
-
-            let bestVal = -Infinity;
-            let bestMove = -1;
-
-            for (item of available){
-                board[item] = autoMark;
-
-                let moveVal  = minimax(board, 0, false);
-
-                board[item] = null;
-
-                if(moveVal > bestVal){
-                    bestVal = moveVal;
-                    bestMove = item;
-                }
-            }
-            return bestMove;
-        }
-
-        const evaluate =(board)=>{
-            if(isGameFinished.isWinner(board) ===autoMark){
-                 return +10;
-            }
-            else if(isGameFinished.isWinner(board) ===null){
-                return 0;
-            }
-            else{
-                return -10;
-            }
-        }
-        const minimax =(board, depth, isMax){
-            let score = evaluate(board);
-
-            if(score == 10){
-                return score;
-            }
-
-            if(score == -10){
-                return score;
-            }
-
-            if(isGameFinished.isTie(board) ===true){
-                return 0;
-            }
-
-            if(isMax){
-                let best = -Infinity;
-
-                
-            }
-        }*/
+       
     }
    
    
-    return{autoMove, normalMove, smartMove};
+    return{normalMove, smartMove};
 };
 
 
@@ -344,8 +268,7 @@ const gameController =()=>{
     var mark = document.querySelector(".mark");
 
     var level = document.querySelector(".level");
-    
-    
+
 
     mark.addEventListener("click", (e)=>{
          console.log(e.target);
@@ -367,7 +290,9 @@ const gameController =()=>{
             }
          }
 
+        
          boards.addEventListener("click", computer(computerMark()).smartMove);
+         //boards.addEventListener("click", computerMove);
 
          
     });
