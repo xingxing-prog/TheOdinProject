@@ -105,10 +105,9 @@ const player =(mark)=>{
 
 const computer =(autoMark)=>{
     
-    
-    const autoMove=()=>{
+    const autoMove=(spot)=>{
 
-    let empty = [];
+    /*let empty = [];
     let board = gameBoard.boards();
     console.log(board);
     for(let i=0; i<board.length; i++){
@@ -119,7 +118,8 @@ const computer =(autoMark)=>{
 
     console.log(empty);
 
-    let spot = empty[Math.floor(Math.random()*empty.length)];
+    let spot = empty[Math.floor(Math.random()*empty.length)];*/
+    let board = gameBoard.boards();
     board[spot] = autoMark;
 
     displayController.displayReset();
@@ -143,14 +143,155 @@ const computer =(autoMark)=>{
         document.querySelector(".modal").style.display = "block";
         result.textContent = `It's a tie !`;
     }
-
-
-    
     
     };
+
+    const randomMove =(available)=>{
+
+        let spot = available[Math.floor(Math.random()*available.length)];
+        return spot;
+    };
+
+    
+    const mark = ()=>{
+        if(autoMark === "X"){
+            return "O";
+        }
+        else{
+            return "X";
+        }
+    };
+    
+    const normalMove = ()=>{
+        let available = emptyBoard(gameBoard.boards());
+        let move = randomMove(available);
+        autoMove(move);
+    }
+
+    const emptyBoard = (board)=>{
+        let available = [];
+        for(let i=0; i<board.length; i++){
+            if(board[i] ==="" ||board[i] ===null){
+               available.push(i);
+          }
+        };
+       
+        return available;
+    }
+
+    const smartMove =()=>{
+
+        const findBestMove = ()=>{
+            
+            let bestMove = -1;
+
+            let available = emptyBoard(gameBoard.boards());
+            /*let available = [];
+            for(let i=0; i<board.length; i++){
+                if(board[i] ==="" ||board[i] ===null){
+                   available.push(i);
+              }
+            };*/
+            bestMove = isWinnerExisted(autoMark, available, bestMove);
+
+            if(bestMove >=0){
+                return bestMove;
+            }
+            else{
+                bestMove = isWinnerExisted(mark(), available, bestMove); 
+                if(bestMove >= 0){
+                    return bestMove;
+                }
+                else{
+                    return randomMove(available);
+                }
+            };
+            
+        };
+
+        const isWinnerExisted =(choice, available, bestMove)=>{
+            let board = gameBoard.boards();
+            for (item of available){
+                board[item] = choice;
+        
+                let name = isGameFinished.isWinner(board);
+
+                if(name ===choice){
+                    bestMove = item;
+                }
+
+                board[item] =null;
+            }
+            return bestMove;
+        };
+
+        console.log(findBestMove());
+        let spot = findBestMove();
+        autoMove(spot);
+        /*const findBestMove= (board)=>{
+
+            let available = [];
+
+            for(let i=0; i<board.length; i++){
+                if(board[i] ==="" ||board[i] ===null){
+                   available.push(i);
+              }
+            }
+
+            let bestVal = -Infinity;
+            let bestMove = -1;
+
+            for (item of available){
+                board[item] = autoMark;
+
+                let moveVal  = minimax(board, 0, false);
+
+                board[item] = null;
+
+                if(moveVal > bestVal){
+                    bestVal = moveVal;
+                    bestMove = item;
+                }
+            }
+            return bestMove;
+        }
+
+        const evaluate =(board)=>{
+            if(isGameFinished.isWinner(board) ===autoMark){
+                 return +10;
+            }
+            else if(isGameFinished.isWinner(board) ===null){
+                return 0;
+            }
+            else{
+                return -10;
+            }
+        }
+        const minimax =(board, depth, isMax){
+            let score = evaluate(board);
+
+            if(score == 10){
+                return score;
+            }
+
+            if(score == -10){
+                return score;
+            }
+
+            if(isGameFinished.isTie(board) ===true){
+                return 0;
+            }
+
+            if(isMax){
+                let best = -Infinity;
+
+                
+            }
+        }*/
+    }
    
    
-    return{autoMove};
+    return{autoMove, normalMove, smartMove};
 };
 
 
@@ -202,14 +343,18 @@ const gameController =()=>{
     
     var mark = document.querySelector(".mark");
 
+    var level = document.querySelector(".level");
+    
+    
+
     mark.addEventListener("click", (e)=>{
          console.log(e.target);
          console.log(e.target.textContent);
         
-         
+         e.target.style.background = "red";
          let name = e.target.textContent;
          
-         displayController.reFresh();
+         
          boards.addEventListener('click', player(name).move);
 
          
@@ -222,7 +367,7 @@ const gameController =()=>{
             }
          }
 
-         boards.addEventListener("click", computer(computerMark()).autoMove);
+         boards.addEventListener("click", computer(computerMark()).smartMove);
 
          
     });
