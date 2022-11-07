@@ -1,7 +1,7 @@
 var gameBoard=(()=>{
     let board=[null, null, null, null, null, null, null, null, null];
     const boards =()=>board;
-    const initial = ()=>{
+    const setBoard = ()=>{
         for(let i=0; i<board.length; i++){
             board[i] =null;
         }
@@ -15,7 +15,7 @@ var gameBoard=(()=>{
             }
         }
     }
-    return{boards, initial, full};
+    return{boards, setBoard, full};
 })();
 
 //console.log(gameBoard.boards());
@@ -43,8 +43,12 @@ var displayController=(()=>{
     }
 
     const reFresh =()=>{
-        gameBoard.initial();
+        
+        
+        gameBoard.setBoard();
+        console.log(gameBoard.boards());
         displayReset();
+        displayBoard(gameBoard.boards());
         document.querySelector(".modal").style.display = "none";
     }
  
@@ -202,12 +206,15 @@ const gameController =()=>{
          console.log(e.target);
          console.log(e.target.textContent);
         
-     
-         boards.addEventListener('click', player(e.target.textContent).move);
+         
+         let name = e.target.textContent;
+         
+         displayController.reFresh();
+         boards.addEventListener('click', player(name).move);
 
          
          let computerMark = ()=>{
-            if(e.target.textContent === "X"){
+            if(name === "X"){
                 return "O";
             }
             else{
@@ -217,48 +224,19 @@ const gameController =()=>{
 
          boards.addEventListener("click", computer(computerMark()).autoMove);
 
-         /*if(isGameFinished.isWinner(board)){
-            gameBoard.full();
-            document.querySelector(".modal").style.display = "block";
-            result.textContent = `${isGameFinished.isWinner(board)} is winner!`;
-         }
-
-         else if(isGameFinished.isTie(board)){
-            document.querySelector(".modal").style.display = "block";
-            result.textContent = `It's a tie!`;
-         }*/
-
          
     });
 
-  
-    
-    
-
-    /*if(isGameFinished.isWinner(board)){
-        console.log("It's finished");
-    }
-    if(isGameFinished.isTie(board)){
-        console.log("It's tie");
-    }*/
-   
-    //boards.addEventListener('click', player("X").move);
-    //boards.addEventListener("click", computer("O").autoMove);
         
     displayController.displayReset();
     displayController.displayBoard(board);
 
-    document.getElementById("restart").addEventListener("click", displayController.reFresh);
+    document.getElementById("restart").addEventListener("click",()=>{
+        window.location.reload();
+    });
 
    
 
 };
 
 gameController();
-
-
-//displayController.displayReset();
-//displayController.displayBoard(board.boards);
-
-//console.log(isGameFinished.isTie(board.boards));
-//console.log(isGameFinished.isWinner(board.boards));
