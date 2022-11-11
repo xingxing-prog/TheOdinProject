@@ -292,8 +292,6 @@ const gameController =()=>{
 
         
          boards.addEventListener("click", computer(computerMark()).smartMove);
-         //boards.addEventListener("click", computerMove);
-
          
     });
 
