@@ -1,5 +1,6 @@
 import './style.css';
-import './photos/background.jpg';
+import './photos';
+
 import homeContent from './home.js';
 import menuContent from './menu.js';
 import contactContent from './contact.js';
