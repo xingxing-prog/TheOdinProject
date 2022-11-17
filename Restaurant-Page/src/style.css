@@ -11,6 +11,23 @@
     
 }
 
+
+html, body{
+    height: 100%;
+    margin:0;
+    background-image:url('./photos/dumpling-steam.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-family:sans-serif;
+    
+
+}
+
+
 .head{
     padding:1rem;
     margin-bottom:2rem;
@@ -18,9 +35,12 @@
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background-color:#222024;
+    background-color:black;
     color:white;
-
+    position:sticky;
+    opacity:0.7;
+    
+    
     
 }
 .page{
@@ -43,9 +63,15 @@ li{
     
 }
 
-li:hover{
+.clicked{
     
+    border-bottom: 2px white solid;
+    padding-bottom:1rem;
+    font-weight:bold;
+    color:red;
+   
 }
+
 
 .h1{
     font-family:"DancingScript";
@@ -54,4 +80,21 @@ li:hover{
     margin:1rem;
     padding: 1rem;
    
+}
+
+.brief{
+
+    width:40%;
+    padding:1rem;
+    margin:5rem auto;
+    background:black;
+    color:#fff;
+    font-size:16px;
+    opacity:0.8;
+    
+}
+
+.background{
+    padding:1rem;
+    line-height:1.5rem;
 }
