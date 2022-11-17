@@ -16,7 +16,7 @@ function component(){
     ul.appendChild(menu);
     const contact = getNavItems("Contact");
     ul.appendChild(contact);
-    
+
     nav.appendChild(ul);
     element.appendChild(nav);
     return element;
@@ -29,4 +29,5 @@ function getNavItems(name){
 }
 
 var content = document.getElementById("content");
+content.setAttribute("class", "main");
 content.appendChild(component());
