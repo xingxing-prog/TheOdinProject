@@ -7,6 +7,8 @@ import contactContent from './contact.js';
 function component(){
     const element = document.createElement("main");
     const header = document.createElement("div");
+    const center = document.createElement("div");
+    
     header.setAttribute("class", "head");
     const h1 = document.createElement("h1");
     h1.textContent = "Authentic Chinese Food";
@@ -15,35 +17,23 @@ function component(){
     const nav = document.createElement("nav");
     const ul = document.createElement("ul");
     ul.setAttribute("class", "page");
-    const home = getNavItems("Home");
+    const home = getNavItems("Home", center);
     home.classList.add("clicked");
-    
+
+    center.appendChild(homeContent());
+   
     ul.appendChild(home);
-    const menu = getNavItems("Menu");
+    
+    const menu = getNavItems("Menu", center);
     ul.appendChild(menu);
-    const contact = getNavItems("Contact");
+
+   
+    const contact = getNavItems("Contact", center);
     ul.appendChild(contact);
 
+   
     nav.appendChild(ul);
     header.appendChild(nav);
-
-    
-    const center = document.createElement("div");
-    if(home.classList.contains("clicked")){
-        center.appendChild(homeContent());
-    }
-    else if(menu.classList.contains("clicked")){
-        center.appendChild(menuContent());
-    }
-    else if(contact.classList.contains("clicked")){
-        contact.appendChild(contactContent());
-    }
-   
-    
-    
-  
-
-
 
 
     element.appendChild(header);
@@ -53,16 +43,42 @@ function component(){
     return element;
 }
 
-function getNavItems(name){
+function getNavItems(name, center){
       const li = document.createElement("li");
       li.setAttribute("class", "item");
       li.textContent = name;
       li.addEventListener("click", (e)=>{
+         
+          deleteClicked();
+          deleteContent(center);
           e.target.classList.toggle("clicked");
+          if(name == "Menu"){
+              center.appendChild(menuContent());
+          }
+          else if(name == "Contact"){
+              center.appendChild(contactContent());
+          }
+          else{
+              center.appendChild(homeContent());
+          }
           console.log(e.target);
       })
 
       return li;
+}
+
+function deleteClicked(){
+    var items = document.querySelectorAll(".item");
+    items.forEach((item)=>{
+        if(item.classList.contains("clicked")){
+            item.classList.toggle("clicked");
+        }
+    })
+}
+
+function deleteContent(center){
+
+    center.innerHTML = null;
 }
 
 var content = document.getElementById("content");
