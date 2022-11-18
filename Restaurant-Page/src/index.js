@@ -1,5 +1,6 @@
 import './style.css';
-import './photos';
+
+
 
 import homeContent from './home.js';
 import menuContent from './menu.js';
@@ -18,15 +19,19 @@ function component(){
     const nav = document.createElement("nav");
     const ul = document.createElement("ul");
     ul.setAttribute("class", "page");
+
+  
+
     const home = getNavItems("Home", center);
     home.classList.add("clicked");
 
-    center.appendChild(homeContent());
+    //center.appendChild(homeContent());
    
     ul.appendChild(home);
     
     const menu = getNavItems("Menu", center);
     ul.appendChild(menu);
+    center.appendChild(menuContent());
 
    
     const contact = getNavItems("Contact", center);
@@ -46,6 +51,7 @@ function component(){
 
 function getNavItems(name, center){
       const li = document.createElement("li");
+
       li.setAttribute("class", "item");
       li.textContent = name;
       li.addEventListener("click", (e)=>{
@@ -59,10 +65,10 @@ function getNavItems(name, center){
           else if(name == "Contact"){
               center.appendChild(contactContent());
           }
-          else{
+          else if(name == "Home"){
               center.appendChild(homeContent());
           }
-          console.log(e.target);
+          
       })
 
       return li;
@@ -79,7 +85,7 @@ function deleteClicked(){
 
 function deleteContent(center){
 
-    center.innerHTML = null;
+    center.innerHTML = "";
 }
 
 var content = document.getElementById("content");

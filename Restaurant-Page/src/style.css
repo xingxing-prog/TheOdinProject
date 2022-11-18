@@ -15,7 +15,7 @@
 html, body{
     height: 100%;
     margin:0;
-    background-image:url('./photos/background.jpg');
+    background-image:url("./photos/background.jpg");
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;
@@ -97,4 +97,9 @@ li{
 .background{
     padding:1rem;
     line-height:1.5rem;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns: 400px 400px;
 }
