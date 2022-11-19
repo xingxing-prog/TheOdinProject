@@ -6,18 +6,28 @@ import dumplings from "./photos/lobster-dumplings.jpg";
 
 const menu = ()=>{
     const menu = document.createElement("div");
-    
-    let images = [];
-    images.push(pork);
-    images.push(dumplings);
+
+    let pics = [];
+    pics.push(pork);
+    pics.push(dumplings);
     
     menu.setAttribute("class", "menu");
 
-    for(let i=0; i<images.length; i++){
+    /*let image = document.createElement("img");
+    image.src = dumplings;
+    menu.appendChild(image);*/
+
+    for(let i=0; i<pics.length; i++){
         let image = document.createElement("img");
-        image.src = images[i]; 
-        menu.append(img);
+        image.src = pics[i];
+        image.style.borderRadius = "50%";
+        menu.appendChild(image);
+
     }
+
+
+
+    
     
 
     return menu;

@@ -1,50 +1,35 @@
 import './style.css';
-
-
-
 import homeContent from './home.js';
 import menuContent from './menu.js';
 import contactContent from './contact.js';
 
+
 function component(){
     const element = document.createElement("main");
-    const header = document.createElement("div");
-    const center = document.createElement("div");
-    
-    header.setAttribute("class", "head");
-    const h1 = document.createElement("h1");
-    h1.textContent = "Authentic Chinese Food";
-    h1.setAttribute("class", "h1");
-    header.appendChild(h1);
-    const nav = document.createElement("nav");
-    const ul = document.createElement("ul");
-    ul.setAttribute("class", "page");
-
-  
-
-    const home = getNavItems("Home", center);
+    const home = document.getElementById("home");
+    const div = document.createElement("div");
     home.classList.add("clicked");
+    div.appendChild(homeContent());
 
-    //center.appendChild(homeContent());
-   
-    ul.appendChild(home);
-    
-    const menu = getNavItems("Menu", center);
-    ul.appendChild(menu);
-    center.appendChild(menuContent());
+    const items = document.querySelectorAll(".item");
+    items.forEach((item)=>{
+        item.addEventListener("click", (e)=>{
+            deleteClicked();
+            item.classList.toggle("clicked");
+            div.innerHTML = null;
+            if(e.target.innerHTML == "Menu"){
+                div.appendChild(menuContent());
+            }
+            else if(e.target.innerHTML == "Contact"){
+                div.appendChild(contactContent());
+            }
+            else{
+                div.appendChild(homeContent());
+            }
+        });
+    });
 
-   
-    const contact = getNavItems("Contact", center);
-    ul.appendChild(contact);
-
-   
-    nav.appendChild(ul);
-    header.appendChild(nav);
-
-
-    element.appendChild(header);
-    element.appendChild(center);
-
+    element.appendChild(div);
 
     return element;
 }
@@ -60,6 +45,7 @@ function getNavItems(name, center){
           deleteContent(center);
           e.target.classList.toggle("clicked");
           if(name == "Menu"){
+              
               center.appendChild(menuContent());
           }
           else if(name == "Contact"){
@@ -68,6 +54,7 @@ function getNavItems(name, center){
           else if(name == "Home"){
               center.appendChild(homeContent());
           }
+
           
       })
 
