@@ -19,7 +19,7 @@ const menu = ()=>{
 
     for(let i=0; i<pics.length; i++){
         //let image = document.createElement("img");
-        let image = new Image(300, 300);
+        let image = new Image(350, 350);
         image.src = pics[i];
         image.style.borderRadius = "50%";
         menu.appendChild(image);
