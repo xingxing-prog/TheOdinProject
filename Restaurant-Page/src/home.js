@@ -1,7 +1,13 @@
+import crab from "./photos/crab.jpg";
 
 const home = ()=>{
     const brief = document.createElement("div");
     brief.setAttribute("class", "brief");
+    
+    const image = new Image(280, 280);
+    image.src = crab;
+    brief.appendChild(image);
+
 
     const head = document.createElement("h2");
     head.setAttribute("class", "h2");
