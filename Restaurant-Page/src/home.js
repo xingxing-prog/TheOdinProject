@@ -1,12 +1,15 @@
 import crab from "./photos/crab.jpg";
 
 const home = ()=>{
+    const homeContent = document.createElement("div");
+    homeContent.setAttribute("class", "homeContent");
+
     const brief = document.createElement("div");
     brief.setAttribute("class", "brief");
     
     const image = new Image(280, 280);
     image.src = crab;
-    brief.appendChild(image);
+    homeContent.appendChild(image);
 
 
     const head = document.createElement("h2");
@@ -20,8 +23,9 @@ const home = ()=>{
     it adds the freshest ginger and green onion, every bite is a refresh entertainment.";
 
     brief.appendChild(background);
+    homeContent.appendChild(brief);
 
-    return brief;
+    return homeContent;
 
 }
 
