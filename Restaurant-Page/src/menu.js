@@ -111,7 +111,7 @@ const menu = ()=>{
         let figure = document.createElement("figure");
         figure.setAttribute("class", "food");
     
-        let image = new Image(250, 200);
+        let image = new Image(350, 300);
    
         image.src = pics[i].src;
         image.style.borderRadius = "70%";
