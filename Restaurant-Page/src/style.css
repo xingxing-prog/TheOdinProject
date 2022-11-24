@@ -20,7 +20,7 @@ html{
     background-size:cover;
     background-position:center;
     display:flex;
-    background-attachment: scroll;
+    background-attachment: fixed;
     flex-direction:column;
     /*align-items:center;*/
     font-family:sans-serif;
