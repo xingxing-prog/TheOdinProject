@@ -1,6 +1,9 @@
 
 import pork from "./photos/steam-dumplings.jpg";
 import dumplings from "./photos/lobster-dumplings.jpg";
+import dimsum from "./photos/dimsum.jpg";
+import hanamaki from "./photos/hanamaki.jpg";
+
 
 
 
@@ -10,6 +13,8 @@ const menu = ()=>{
     let pics = [];
     pics.push(pork);
     pics.push(dumplings);
+    pics.push(dimsum);
+    pics.push(hanamaki);
     
     menu.setAttribute("class", "menu");
 
@@ -21,7 +26,7 @@ const menu = ()=>{
         //let image = document.createElement("img");
         let image = new Image(350, 350);
         image.src = pics[i];
-        image.style.borderRadius = "50%";
+        image.style.borderRadius = "70%";
         menu.appendChild(image);
 
     }
