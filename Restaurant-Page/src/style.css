@@ -109,6 +109,12 @@ li{
     gap:1rem;
 }
 
+.homeContent{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
 .menu{
     display:grid;
     margin:5rem auto;
