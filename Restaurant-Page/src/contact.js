@@ -25,7 +25,8 @@ const contact = ()=>{
     
     const hour = document.createElement("p");
     hour.setAttribute("class", "address");
-    hour.textContent = "Mon-Sat: 11:00AM - 2:30PM\n 3:00PM-10:00PM";
+    let hourContent = "Mon-Sat: 11:00AM - 2:30PM" + "<br>" +  "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+ "3:00PM-10:00PM";
+    hour.innerHTML = hourContent;
     menu.appendChild(hour);
     
     
