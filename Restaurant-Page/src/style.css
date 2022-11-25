@@ -130,3 +130,29 @@ li{
     opacity:0.7;
     color:white;
 }
+
+.h2{
+    font-family:sans-serif;
+    font-size:26px;
+    color:white;
+
+}
+
+.address{
+    font-family:sans-serif;
+   
+    font-size:20px;
+    color:white;
+}
+
+.menuContent{
+    width:40%;
+    padding:1.5rem;
+    margin:5rem auto;
+    background:black;
+    color:#fff;
+    font-size:16px;
+    opacity:0.8;
+    border-radius:0.5rem;
+    line-height:3rem;
+}
