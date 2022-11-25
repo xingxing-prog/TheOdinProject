@@ -86,12 +86,14 @@ li{
 .brief{
 
     width:40%;
-    padding:1rem;
+    padding:1.5rem;
     margin:5rem auto;
     background:black;
     color:#fff;
     font-size:16px;
     opacity:0.8;
+    border-radius:0.5rem;
+
     
 }
 

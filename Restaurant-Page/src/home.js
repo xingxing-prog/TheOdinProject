@@ -7,8 +7,10 @@ const home = ()=>{
     const brief = document.createElement("div");
     brief.setAttribute("class", "brief");
     
-    const image = new Image(280, 280);
+    const image = new Image(350, 280);
     image.src = crab;
+    image.style.borderRadius="70%";
+    image.style.marginTop= "2rem";
     homeContent.appendChild(image);
 
 
