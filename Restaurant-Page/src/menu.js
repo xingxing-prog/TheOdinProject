@@ -90,9 +90,6 @@ const menu = ()=>{
     }
 
 
-
-    
-
     pics.push(porkDumplings);
     pics.push(lobsterDumplings);
     pics.push(beefDumplings);
