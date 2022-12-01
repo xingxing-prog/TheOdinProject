@@ -12,6 +12,30 @@ body{
     display:flex;
 }
 
+.item{
+    margin:2rem;
+}
+
+.left{
+    padding:1rem;
+   
+}
+
+.sidebar{
+    list-style-type: none;
+    line-height:2rem;
+    vertical-align:middle;
+}
+
+.right{
+    margin-left:1rem;
+}
+
+.project{
+    padding:1rem;
+
+}
+
 
 *{
     padding:0;
