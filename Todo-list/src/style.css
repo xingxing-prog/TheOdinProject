@@ -5,9 +5,12 @@
     margin:0;
 }
 .header{
-    padding:1rem;
-    background-color: black;
+    padding:2rem;
+    background-color: blue;
     color:#fff;
+    display:flex;
+    gap:1rem;
+
 }
 
 .start{
