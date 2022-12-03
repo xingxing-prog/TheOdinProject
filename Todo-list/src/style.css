@@ -4,17 +4,21 @@
     font-style:normal;
 }
 
+
 body{
     font-family:sans-serif;
+    
 }
 
 .main{
     display:flex;
+    
 }
 
 .items{
    
     background-color:#d3d3d3;
+    width:15%;
 }
 
 .left{
@@ -52,9 +56,24 @@ body{
     display:flex;
     gap:1rem;
     font-family:"Roboto";
+    
 
 }
 
 .start{
     color:red;
+}
+
+#footer{
+    background-color:blue;
+    padding:1rem;
+    margin:0 auto;
+    color:#fff;
+    
+}
+
+@media screen and(max-width:600px){
+    .main{
+        display:flex;
+    }
 }

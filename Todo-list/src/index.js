@@ -11,4 +11,4 @@ function component(){
     return element;
 }
 
-document.querySelector("content").appendChild(component());
+document.querySelector(".content").appendChild(component());
