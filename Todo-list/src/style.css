@@ -20,10 +20,6 @@ body{
     display:none;
 }
 
-#toggle:checked ~.items{
-    display:block;
-}
-
 .line{
     border-bottom:0.4rem solid #fff;
 }
@@ -56,29 +52,31 @@ body{
 }
 
 .left{
-    padding:1rem;
-    margin-left:1rem;
-   
+    padding:1.5rem;
+    
 }
 
 .sidebar{
     list-style-type: none;
     line-height:2rem;
     vertical-align:middle;
+    padding:0.3rem 1.2rem;
 }
 
 .right{
-    margin-left:1rem;
-   
+    margin-left:0.5rem;
+    
+}
+
+.right:hover, .sidebar:hover{
+    background:#ABABAB;
 }
 
 .project{
     padding:1rem;
     margin:1rem;
-
+   
 }
-
-
 
 .header{
     padding:2rem;
@@ -98,12 +96,12 @@ body{
 
 #footer{
     background-color:blue;
-    padding:1rem;
+    padding:1.2rem;
     margin:0 auto;
     color:#fff;
     position:absolute;
     bottom:0;
     width:100%;
-    
+    text-align:center;
 }
 
