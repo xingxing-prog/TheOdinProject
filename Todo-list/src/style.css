@@ -142,6 +142,9 @@ body{
         
     }
 
+    .hamburger{
+        display:none;
+    }
 
 
 }
