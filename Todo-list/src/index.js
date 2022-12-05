@@ -12,3 +12,19 @@ function component(){
 }
 
 document.querySelector(".content").appendChild(component());
+
+function showNavBarsMobile(){
+    let items = document.querySelector(".items");
+    let toggle = document.getElementById("toggle");
+    toggle.addEventListener("click", (e)=>{
+         if(toggle.checked){
+            items.style.display = "block";
+         }
+         else{
+            items.style.display = "none";
+         }
+    })
+    
+
+}
+showNavBarsMobile();
