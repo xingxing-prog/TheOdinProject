@@ -17,12 +17,13 @@ function showNavBarsMobile(){
     let items = document.querySelector(".items");
     let toggle = document.getElementById("toggle");
     
+    
     toggle.addEventListener("click", (e)=>{
-         if(toggle.checked){
-            items.style.display = "block";
+         if(!toggle.checked){
+            items.style.display = "none";
          }
          else{
-            items.style.display = "none";
+            items.style.display = "block";
          }
     })
     
