@@ -7,11 +7,29 @@ import "@fortawesome/fontawesome-free/js/solid"
 function component(){
     const element = document.createElement("div");
     element.setAttribute("class", "start");
-    element.innerHTML = "Hello World";
+    
+    const tasks = document.querySelectorAll(".sidebar");
+    tasks.forEach((task)=>{
+        task.addEventListener("click", (e)=>{
+            deleteClicked();
+            task.classList.toggle("clicked");
+            console.log(e.target);
+        });
+    })
+
     return element;
 }
 
 document.querySelector(".content").appendChild(component());
+
+function deleteClicked(){
+    var tasks = document.querySelectorAll(".sidebar");
+    tasks.forEach((task)=>{
+        if(task.classList.contains("clicked")){
+            task.classList.toggle("clicked");
+        }
+    });
+}
 
 function showNavBarsMobile(){
     let items = document.querySelector(".items");
@@ -30,3 +48,4 @@ function showNavBarsMobile(){
 
 }
 showNavBarsMobile();
+

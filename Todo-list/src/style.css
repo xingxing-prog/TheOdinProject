@@ -125,6 +125,16 @@ body{
     height:7vh;
 }
 
+.add{
+    font-size:40px;
+    margin-left:50px;
+}
+
+.clicked{
+    background-color:#ABABAB;
+    font-weight:700;
+}
+
 
 
 @media  screen and (max-width: 600px){
@@ -146,7 +156,9 @@ body{
         width:100vw;
         display:none;
     }
-
+    #toggle:checked + .items{
+        display:block;
+    }
 
 
     
