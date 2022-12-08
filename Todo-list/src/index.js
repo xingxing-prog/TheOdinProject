@@ -4,18 +4,30 @@ import "@fortawesome/fontawesome-free/js/fontawesome"
 import "@fortawesome/fontawesome-free/js/regular"
 import "@fortawesome/fontawesome-free/js/solid"
 
+import inboxContent from './inbox.js';
+
 function component(){
     const element = document.createElement("div");
     element.setAttribute("class", "start");
+    const div = document.createElement("div");
     
+
     const tasks = document.querySelectorAll(".sidebar");
     tasks.forEach((task)=>{
         task.addEventListener("click", (e)=>{
             deleteClicked();
             task.classList.toggle("clicked");
-            console.log(e.target);
+            div.innerHTML = null;
+
+            console.log(e.target.textContent);
+            if(e.target.textContent == "Inbox"){
+                div.appendChild(inboxContent());
+            }
+           
         });
-    })
+    });
+
+    element.appendChild(div);
 
     return element;
 }
