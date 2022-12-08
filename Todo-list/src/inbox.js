@@ -11,11 +11,13 @@ const inbox = ()=>{
     head.setAttribute("class", "head");
 
     const add = document.createElement("div");
+    add.setAttribute("class", "addTask");
     const addIcon = document.createElement("span");
     addIcon.setAttribute("class", "addIcon");
     addIcon.innerHTML = "+";
     
     const addContent = document.createElement("span");
+    addContent.setAttribute("class", "addContent");
     addContent.innerHTML = "Add Task";
 
     
