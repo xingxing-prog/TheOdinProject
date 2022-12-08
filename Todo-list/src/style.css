@@ -109,9 +109,6 @@ body{
     height:13vh;
 }
 
-.start{
-    color:red;
-}
 
 #footer{
     background-color:blue;
@@ -133,6 +130,12 @@ body{
 .clicked{
     background-color:#ABABAB;
     font-weight:700;
+}
+
+.head{
+    font-size:40px;
+    font-weight:800;
+
 }
 
 
