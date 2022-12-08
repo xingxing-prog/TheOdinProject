@@ -5,11 +5,16 @@ import "@fortawesome/fontawesome-free/js/regular"
 import "@fortawesome/fontawesome-free/js/solid"
 
 import inboxContent from './inbox.js';
+import createTask from "./createTodo.js";
+
 
 function component(){
     const element = document.createElement("div");
     element.setAttribute("class", "start");
     const div = document.createElement("div");
+    div.appendChild(inboxContent());
+    document.getElementById("inbox").classList.add("clicked");
+
     
 
     const tasks = document.querySelectorAll(".sidebar");

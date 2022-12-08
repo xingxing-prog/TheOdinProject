@@ -1,3 +1,6 @@
+import createTask from "./createTodo.js";
+
+
 const inbox = ()=>{
 
     const inboxContent = document.createElement("div");
@@ -6,8 +9,23 @@ const inbox = ()=>{
     const head = document.createElement("h2");
     head.innerHTML = "Inbox";
     head.setAttribute("class", "head");
+
+    const add = document.createElement("div");
+    const addIcon = document.createElement("span");
+    addIcon.setAttribute("class", "addIcon");
+    addIcon.innerHTML = "+";
+    
+    const addContent = document.createElement("span");
+    addContent.innerHTML = "Add Task";
+
+    
+    
+    add.appendChild(addIcon);
+    add.appendChild(addContent);
+    
     
     inboxContent.appendChild(head);
+    inboxContent.appendChild(add);
 
 
 
