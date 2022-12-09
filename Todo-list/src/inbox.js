@@ -10,7 +10,7 @@ const inbox = ()=>{
     head.innerHTML = "Inbox";
     head.setAttribute("class", "head");
 
-    const add = document.createElement("div");
+    /*const add = document.createElement("div");
     add.setAttribute("class", "addTask");
     const addIcon = document.createElement("span");
     addIcon.setAttribute("class", "addIcon");
@@ -23,11 +23,11 @@ const inbox = ()=>{
     
     
     add.appendChild(addIcon);
-    add.appendChild(addContent);
+    add.appendChild(addContent);*/
     
     
     inboxContent.appendChild(head);
-    inboxContent.appendChild(add);
+    //inboxContent.appendChild(add);
 
 
 
