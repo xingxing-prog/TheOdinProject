@@ -177,11 +177,12 @@ body{
 }
 
 .task{
-    padding:2px;
+    padding:4px;
     width:22rem;
     border:none;
     outline:none;
     background-color:beige;
+
 
 }
 
