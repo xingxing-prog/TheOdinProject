@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>TODO List</title>
+   
+</head>
+<body>
+    <header class="header">
+        <i class='fas fa-table' style='font-size:36px;color:white'></i>
+        <h1>ToDo List</h1>
+        <input id="toggle" type="checkbox"></input>
+        <label for="toggle" class="hamburger">
+           <div class="line"></div>
+           <div class="line"></div>
+           <div class="line"></div>
+        </label>
+    </header>
+
+    <div id="modal">
+      <form class="modal-content" id="contact">
+       <input type="text" placeholder="Title" id="titleInfo" class="task" name="title" required><br>
+       <textarea placeholder="description" id="descriptionInfo" class="task" name="description" row="10" cols="25"></textarea><br>
+       <input type="date" id="dateInfo" class="task" name="date"><br>
+       <button type="submit" class="task" id="submit">add</button>
+       <button id="cancel">cancel</button>
+      </form>
+   </div>
+
+    
+    <main class="main">
+       <div class="items">
+          <ul class="left">
+              <li class="sidebar" id="inbox"><i class="fas fa-inbox"></i><span class="right">Inbox</span></li>
+              <li class="sidebar"><i class="fa-solid fa-calendar-check"></i><span class="right">Today</span></li>
+              <li class="sidebar"><i class="fas fa-calendar-week"></i><span class="right">This Week</span></li>
+          </ul>
+
+          <ul class="project"><strong>Projects</strong>
+             <li class="sidebar">Work</li>
+             <li class="sidebar">Personal</li>
+             <li class="sidebar">Educational</li>
+          </ul>
+
+          <div class="add"><i class="fa-solid fa-plus-circle"></i></div>
+       </div>
+       <div class="content">
+       </div>
+     
+
+    </main>
+    
+    
+
+    <script src="main.js"></script>
+    <footer id="footer">Copyright &#169 MX 2022</footer>
+
+</body>
+</html>
