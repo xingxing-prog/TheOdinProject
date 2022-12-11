@@ -23,7 +23,7 @@
     <div id="modal">
         <form class="modal-content" id="contact">
          <input type="text" placeholder="Title" id="titleInfo" class="task" name="title" required><br>
-         <textarea placeholder="description" id="descriptionInfo" class="textarea" name="description" cols="20" rows="8"></textarea>
+         <textarea placeholder="description" id="descriptionInfo" class="textarea" name="description" cols="18" rows="8"></textarea>
          <div class="date">
            <label for="date">DueDate:</label>
            <input type="date" id="dateInfo" name="date"><br>
@@ -37,8 +37,8 @@
             </select>
          </div>
          <div class="decision">
-           <button type="submit" id="submit">add ToDo</button>
-           <button id="cancel">cancel</button>
+           <button type="submit" id="submit" class="decisionAdd">ADD TO DO</button>
+           <button id="cancel" class="decisionCancel"><i class="fa-regular fa-trash-can"></i></button>
          </div>
         </form>
      </div>

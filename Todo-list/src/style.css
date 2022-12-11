@@ -171,7 +171,7 @@ body{
     background: RGB(7, 42, 108);
     font-family:inherit;
     width:27rem;
-    padding:1.5rem;
+    padding:1.8rem;
     border-radius:0.5rem;
     margin:15% auto;
     outline:none;
@@ -208,6 +208,38 @@ body{
     padding:5px;
 }
 
+.decisionAdd{
+    background-color:Green;
+    padding:0.3rem;
+    color:#fff;
+    font-family:"Roboto";
+    font-size:15px;
+    border:none;
+    width:25%;
+    margin-top:5px;
+    font-weight:500;
+    border-radius:0.5rem;
+}
+
+.decisionCancel{
+   
+    padding:2px;
+    background:RGB(7, 42, 108);
+    font-size:20px;
+    border:none;
+    float:right;
+    color:#fff;
+}
+
+#dateInfo{
+    font-family:"Roboto";
+}
+
+#option{
+    font-family:"Roboto";
+    font-size:15px;
+    font-weight:600;
+}
 
 
 
